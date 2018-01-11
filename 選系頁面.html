@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html><body>
+<h2>請選擇學院</h2>
+<select id ="college-list" onchange="collegeChange()">
+</select>
+
+<h2>請選擇科系</h2>
+<select id ="dept-list"></select>
+<p id = "demo"></p>
+
+<script>
+var select = ["請先選擇學院"];
+var colleges = ["請選擇","商學院","工學院","建設學院"];
+var businessDepts = ["請選擇","會計學系","國際經營與貿易學系","國際經營與貿易學系國際企業管理全英語學士班","財稅學系",
+				"合作經濟暨社會事業經營學系","統計學系","經濟學系","企業管理學系","行銷學系","國際企業管理學士學位學程(英語專班)",
+				"商學進修學士學位學程","財經法律研究所","科技管理碩士學位學程","產業碩士專班","商學專業碩士在職學位學程","商學博士學位學程"];
+				
+var engineeringDepts =["請選擇","機械與電腦輔助工程學系","纖維與複合材料學系","工業工程與系統管理學系","化學工程學系","航太與系統工程學系",
+"精密系統設計學士學位學程","電聲碩士學位學程","綠色能源科技碩士學位學程","創意設計碩士學位學程","材料與製造工程碩士在職專班",
+"智能製造與工程管理碩士在職學位學程","機械與航空工程博士學位學程"];
+
+var archDepts=["請選擇","土木工程學系","水利工程與資源保育學系","都市計畫與空間資訊學系","運輸與物流學系","土地管理學系","景觀與遊憩碩士學位學程",
+"專案管理碩士在職學位學程","建設碩士在職學位學程","土木水利工程與建設規劃博士學位學程"]; 
+
+var collegeElm = document.getElementById("college-list");
+var deptElm= document.getElementById("dept-list");
+
+populateData(collegeElm, colleges);
+
+function collegeChange(){
+     var selIndex = collegeElm.options[collegeElm.selectedIndex].value;
+	 switch(selIndex){
+		case "0":
+			populateData(deptElm,select);
+			break;
+	    case "1":
+		    populateData(deptElm,businessDepts);
+			break;
+		case "2":
+		    populateData(deptElm,engineeringDepts);
+			break;
+	    case "3":
+		    populateData(deptElm,archDepts);
+			break;
+		default:
+		    console.log("Not Accept!");
+	 }
+}
+
+function populateData(collegeElm, colleges){
+var options = "";
+for(var i=0;i< colleges.length;i++){
+   options = options + '<option value="'+i+'">'+ colleges[i]
+   }
+ collegeElm.innerHTML = options;
+}
+</script>
+</body></html>
